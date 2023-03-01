@@ -1,0 +1,237 @@
+/* JSON file to configure the project manager TOMO mode */
+/* The ICON string needs to correspond to a dict key listed in the PM */
+/* The available keys can be found by browsing the JSON files of looking at e2projectmanager.py */ 
+
+[
+  {
+    "NAME": "Raw Data",
+    "ICON": "tomo_raw",
+    "CHILDREN": [
+      {
+        "MODE": "tomo",
+        "PROGRAM": "e2ddd_external.py",
+        "NAME": "Process DDD movies",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2buildstacks.py",
+        "MODE": "tomo",
+        "NAME": "Generate tiltseries",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2import.py",
+        "MODE": "tiltseries",
+        "NAME": "Import tiltseries",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2import.py",
+        "MODE": "tomos",
+        "WIZARD": "/lib/pmconfig/tomoimport.json",
+        "NAME": "Import tomograms",
+        "CHILDREN": []
+      }
+    ]
+  },
+
+  {
+    "NAME": "3D Reconstruction",
+    "ICON": "tomo_recon",
+    "CHILDREN": [
+      {
+        "PROGRAM": "e2tomogram.py",
+        "MODE": "easy",
+        "NAME": "Reconstruct tomograms",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_tomoctf.py",
+        "NAME": "CTF estimation",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2tomo_showali.py",
+        "MODE": "fiderr",
+        "NAME": "Examine fiducial error",
+        "CHILDREN": []
+      }
+    ]
+  },
+  {
+    "NAME": "Segmentation",
+    "ICON": "tomo_seg",
+    "CHILDREN": [
+      {
+        "PROGRAM": "e2tomoseg_preproc.py",
+        "MODE": "proc",
+        "NAME": "Preprocess tomograms",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_boxer.py",
+        "MODE": "box2d",
+        "NAME": "Box training references",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2tomoseg_buildtrainset.py",
+        "MODE": "seg",
+        "NAME": "Segment training references",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2tomoseg_buildtrainset.py",
+        "MODE": "set",
+        "NAME": "Build training set",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2tomoseg_convnet.py",
+        "MODE": "train",
+        "NAME": "Train the neural network",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2tomoseg_convnet.py",
+        "MODE": "test",
+        "NAME": "Apply the neural network",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_extractfromseg.py",
+        "MODE": "extract",
+        "NAME": "Find particles from segmentation",
+        "CHILDREN": []
+      },
+      {
+        "NAME": "Manual Segmentation",
+        "CHILDREN": [
+          {
+            "PROGRAM": "e2tomo_drawcurve.py",
+            "MODE": "tomoseg",
+            "NAME": "Draw curves",
+            "CHILDREN": []
+          },
+          {
+            "PROGRAM": "e2tomo_drawcontour.py",
+            "MODE": "tomoseg",
+            "NAME": "Draw contours",
+            "CHILDREN": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "NAME":"Subtomogram Averaging",
+    "ICON": "tomo_spt",
+    "CHILDREN":[
+      {
+        "MODE": "box3d",
+        "WIKIPAGE": "http://blake.bcm.tmc.edu/emanwiki/EMAN2/Programs/e2spt_boxer",
+        "PROGRAM": "e2spt_boxer.py",
+        "NAME": "Manual boxing",
+        "CHILDREN": []
+      },
+      {
+        "MODE": "boxing",
+        "PROGRAM": "e2spt_tempmatch.py",
+        "NAME": "Reference-based boxing",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_boxer_convnet.py",
+        "NAME": "Convnet based auto-boxing",
+        "CHILDREN": []
+      },
+      {
+        "MODE": "extract",
+        "PROGRAM": "e2spt_extract.py",
+        "NAME": "Extract particles",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_buildsets.py",
+        "NAME": "Build sets",
+        "MODE": "sets",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_sgd_new.py",
+        "NAME": "New initial model generator",
+        "MODE": "model",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_sgd.py",
+        "NAME": "Generate initial model",
+        "MODE": "model",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_refine_new.py",
+        "NAME": "new 3D refinement",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_refine.py",
+        "NAME": "3D refinement",
+        "CHILDREN": []
+      },
+      {
+        "PROGRAM": "e2spt_tiltrefine.py",
+        "NAME": "Sub-tilt refinement",
+        "CHILDREN": []
+      },
+      {
+        "NAME": "Classification",
+        "CHILDREN": [
+          {
+            "PROGRAM": "e2spt_classify_byproj.py",
+            "NAME": "Ortho-proj classification",
+            "CHILDREN": []
+          },
+          {
+            "PROGRAM": "e2spt_pcasplit.py",
+            "NAME": "PCA-based classification",
+            "CHILDREN": []
+          },
+          {
+            "PROGRAM": "e2spt_classify.py",
+            "NAME": "Multi-reference refinement",
+            "MODE": "multi",
+            "CHILDREN": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+      "NAME":"Analysis and Visualization",
+      "ICON": "tomo_plt",
+      "CHILDREN":[
+        {
+          "PROGRAM": "e2tomo_eval.py",
+          "NAME": "Evaluate tomograms",
+          "CHILDREN": []
+        },
+        {
+          "PROGRAM": "e2spt_eval.py",
+          "NAME": "Evaluate SPT refinements",
+          "CHILDREN": []
+        },
+        {
+          "PROGRAM": "e2spt_mapptclstotomo.py",
+          "NAME": "Map particles to tomograms",
+          "CHILDREN": []
+	},
+        {
+          "PROGRAM": "e2spt_stat.py",
+          "NAME": "Calc quality vs. reference",
+          "MODE": "gui",
+          "CHILDREN": []
+        }
+    ]
+  }
+]

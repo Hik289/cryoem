@@ -1,0 +1,22 @@
+/* JSON file to configure the project manager SPR mode */
+/* The ICON string needs to correspond to a dict key listed in the PM */
+/* The available keys can be found by browsing the JSON files of looking at e2projectmanager.py */ 
+[
+  {
+    "single_image":"/images/single_image.png",
+    "multiple_images":"/images/multiple_images.png",
+    "green_boxes":"/images/green_boxes.png",
+    "ctf":"/images/ctf.png",
+    "web":"/images/classes.png",
+    "single_image_3d":"/images/single_image_3d.png",
+    "refine":"/images/refine.png",
+    "eulers":"/images/eulerxplor.png",
+    "resolution":"/images/plot.png",
+    "tomo_hunter":"/images/tomo_hunter.png",
+    "tomo_recon":"/images/eman_tomo_recon.png",
+    "tomo_seg":"/images/eman_tomo_seg.png",
+    "tomo_raw":"/images/eman_tomo_raw.png",
+    "tomo_spt":"/images/eman_tomo_spt.png",
+    "tomo_plt":"/images/eman_tomo_plot.png"
+  }
+]

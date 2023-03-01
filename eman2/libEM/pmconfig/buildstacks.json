@@ -1,0 +1,24 @@
+/* JSON file to make the buildstacks wizard */
+[
+  {
+    "TITLE":"e2buildparticlesets Wizard",
+    "INST":"This Wizard is to Help users to build stacks from sets of particles",
+    "WIDGETS":[]
+  },
+  {
+    "TITLE":"Select particles",
+    "INST":"Select particle stacks from the particles directory. Also choose the output filename",
+    "WIDGETS":[
+      "stack_files",
+      "stackname"
+    ]
+  },
+  {
+    "TITLE":"Stack options",
+    "INST":"Choose the file type for output. Best option is 'BDB', which causes a virtual stack to be written (this saves space). HDF is also a decent choice but makes copies of the images eating up space. Spider is the worst choice as much metadata will not be conserved. Checking 'excludebad' causes bad particles to be omitted from the stack.",
+    "WIDGETS":[
+      "filetype",
+      "excludebad"
+    ]
+  }
+]
